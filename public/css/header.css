@@ -1,0 +1,16 @@
+.headerDiv{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    width: 100%;
+}
+.boardBtn{
+    float: left;
+}
+.headerDiv button{
+    cursor:pointer;
+    margin: 20px 5px 0px 5px;
+    border: 1px solid whitesmoke;
+    background-color: whitesmoke;
+    height: 20px;
+}

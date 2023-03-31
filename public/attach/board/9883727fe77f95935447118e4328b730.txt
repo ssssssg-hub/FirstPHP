@@ -1,0 +1,73 @@
+회원게시판
+
+
+입력
+게시물번호 자동증가 1 ~  (sequence 생성)
+제목,
+내용,
+회원번호,
+등록일,
+수정일
+
+
+
+
+
+
+
+상세조회, 수정시 href에 ?ec_no=<?echo $value['ec_no']?>로 작성글 넘버 필요없는지
+
+form을 만들지 않고 post요청의 버튼을 만들려면..?
+hidden으로 글 넘버 보내고 exec.php에서 그거로 값을 확인했는데
+
+
+
+마무리 할 것
+
+ec_no 가져오게 되었을때
+1. 상세조회 페이지
+2. 수정시 ec_no 반영
+3. 삭제시 ec_no 반영
+
+
+
+
+
+
+
+list_size = 4
+
+select count(*) from educommunity e 
+
+3
+10 / 4 
+
+
+select * from educommunity 
+order by ec_regdt asc
+offset 1
+limit  8 
+
+SELECT * FROM educommunity e order by ec_regdt asc LIMIT 8 OFFSET 8
+
+1 | 2 | 3
+
+pageNo = 1
+
+pageNo -1 * list_size
+
+
+
+
+클래스 사용해서 계산식들 다 클래스로 옮기고 실제 페이지에서는 호출만 해서 쓸수있게
+
+
+
+
+
+
+
+
+
+답글 달기
+- parent 컬럼 추가, parent의 레벨 필요

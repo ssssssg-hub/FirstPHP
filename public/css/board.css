@@ -1,0 +1,100 @@
+.holeDiv{
+    display: flex;
+    justify-content: space-between;
+}
+.holeBoardDiv{
+    width: 100%;
+    max-width: 2500px;
+}
+
+.holeTitleDiv{
+    /*text-align: center;*/
+}
+
+.titleDiv{
+    display: inline-block;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    margin: auto 0;
+    border-bottom: 2px solid white;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.writeBtn{
+    cursor: pointer;
+    background-color: whitesmoke;
+    border: 1px solid whitesmoke;
+}
+
+.holeCategoryDiv{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.categoryDiv{
+    display: inline-block;
+}
+
+.categoryDiv button{
+    cursor: pointer;
+    width: 100%;
+    max-width: 800px;
+    height: 50px;
+    border: none;
+    background-color: whitesmoke;
+}
+
+.categoryDiv button:hover{
+    background-color: black;
+}
+
+.holeBoardBox{
+    display: flex;
+    justify-content: center;
+}
+
+.boardBox{
+    display: inline-block;
+    width: 100%;
+    max-width: 2500px;
+    padding-top: 20px;
+}
+
+.replyMark{
+    display: flex;
+    justify-content: center;
+}
+
+.board{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-bottom:20px;
+    border: 1px solid white;
+    height: 150px;
+    width: 100%;
+    max-width: 1500px;
+}
+
+.boardCon{
+    text-align: left;
+}
+
+.uploadedFileTd{
+    font-size: 10px;
+}
+
+.naviDiv{
+    text-align: center;
+}
+
+.naviDiv a {
+    text-decoration: none;
+    color: whitesmoke;
+}

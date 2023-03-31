@@ -1,0 +1,41 @@
+.holeMemberFormDiv{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.memberFormDiv{
+    background-color: lightgray;
+    width: 450px;
+}
+
+.memberFormDiv h1 {
+    display: flex;
+    justify-content: center;
+}
+
+.memberFormDiv input{
+    margin: 10px 0px 10px 0px;
+    height: 50px;
+    width: 350px;
+    border-radius: 5px;
+    border: 0px;
+    background-color: whitesmoke;
+}
+.memberFormDiv input:last-child{
+    background-color: darkolivegreen;
+    margin-top: 20px;
+}
+
+.memberForm{
+    margin-left: 50px;
+}
+
+.joinBtn{
+    margin: 0px 0px 10px 50px;
+    height: 50px;
+    width: 350px;
+    border-radius: 5px;
+    border: 0px;
+    background-color: lightsteelblue;
+}
