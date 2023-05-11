@@ -5,6 +5,7 @@
 <head>
     <link rel="stylesheet" href="/css/form.css">
     <script>
+        // 로그인 필수값 확인 함수
         function loginCheck() {
             let inputId = document.getElementById('id').value;
             let inputPassword = document.getElementById('password').value;
@@ -43,3 +44,4 @@
 <?PHP
 include $_SERVER['DOCUMENT_ROOT']."/include/footer.php";
 ?>
+

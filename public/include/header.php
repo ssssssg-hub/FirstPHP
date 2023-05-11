@@ -1,12 +1,17 @@
 <?PHP
-    include $_SERVER['DOCUMENT_ROOT']."/include/header.inc.php";
-    $returnUrl = urldecode($_GET['returnUrl']);
+# include = 같은 파일 여러 번 포함 가능 / 포함할 파일이 없어도 다음 코드 실행. header.inc 파일 읽어옴
+include $_SERVER['DOCUMENT_ROOT']."/include/header.inc.php";
+
+# returnUrl 변수는 GET 요청의 'returnUrl' 값을 url 디코딩한 값
+$returnUrl = urldecode($_GET['returnUrl']);
 ?>
 
 <html>
 <header>
     <link href="../css/header.css" rel="stylesheet" >
     <script>
+
+    // 로그아웃 실행 함수
     function memberLogOutFunction() {
 
         if(!confirm("로그아웃을 하시겠습니까?")){
@@ -17,6 +22,7 @@
         }
     }
 
+    // 회원탈퇴 실행 함수
     function memberOutFunction() {
         if(!confirm("탈퇴 하시겠습니까?")){
             alert("취소되었습니다.")

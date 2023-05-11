@@ -1,3 +1,21 @@
+/*#email:invalid {*/
+/*    border-color: red;*/
+/*}*/
+/*#email:invalid:focus {*/
+/*    outline: none;*/
+/*}*/
+/*#email:invalid + span::before {*/
+/*    content: "⚠ ";*/
+/*    color: red;*/
+/*    font-weight: bold;*/
+/*}*/
+/*#email:invalid + span::after {*/
+/*    content: attr(title);*/
+/*    color: red;*/
+/*    margin-left: 5px;*/
+/*    font-weight: bold;*/
+/*}*/
+
 .holeMemberFormDiv{
     display: flex;
     justify-content: center;

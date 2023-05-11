@@ -38,6 +38,11 @@
     text-decoration: underline;
 }
 
+.postCareDiv{
+    display: flex;
+    justify-content: space-between;
+}
+
 .postCareBtnDiv submit{
     margin: 20px 5px 0px 5px;
     border: 1px solid whitesmoke;

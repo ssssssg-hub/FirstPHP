@@ -1,29 +1,30 @@
 <?PHP
+# include = 같은 파일 여러 번 포함 가능 / 포함할 파일이 없어도 다음 코드 실행. header.inc 파일 읽어옴
 include $_SERVER['DOCUMENT_ROOT']."/include/header.php";
 
+# include_once = 같은 파일 한 번만 포함 / 포함할 파일이 없어도 다음 코드 실행. board.class 파일 읽어옴
 include_once $_SERVER['DOCUMENT_ROOT']. "/classes/board.class.php";
 
+# $memberHandler 는 인스턴스, BOARD 는 타입을 정의하는 클래스
 $boardHandler = new BOARD();
+
+# getBoardList()함수를 호출하는 변수. 게시글 전체 리스트를 가져옴
 $rows = $boardHandler->getBoardList();
 
+# boardList()함수를 호출하는 변수. 게시판 전체 리스트를 보여줌
 $row = $boardHandler->boardList();
 
-$sql = "select ecc_title from educommuclassifi where ecc_no = {$_GET['boardNo']} ";
-$stmt = $dbconn->prepare($sql);
-$stmt->execute();
-$title = $stmt->fetch();
+# boardNo()함수를 호출하는 변수. 현재 페이지의 게시판 타이틀을 가져옴
+$boardNo = $boardHandler->boardNo();
+$boardNo = $boardNo['ecc_title'];
+
 ?>
 <html>
 <head>
     <link rel="stylesheet" href="../css/board.css">
     <script>
-        function postOut() {
-            if(!confirm("게시글을 삭제하시겠습니까?")){
-                alert("취소되었습니다.")
-                return false;
-            }
-            return true;
-        }
+
+        // 게시판 생성 실행 함수
         function createCheck(){
             let writeBoardName = document.getElementById('boardName').value;
             if(writeBoardName.length == 0){
@@ -54,7 +55,7 @@ $title = $stmt->fetch();
     <div class="holeBoardDiv">
 <div class="holeTitleDiv">
 <div class="titleDiv">
-<h2 class="title"><?php echo $title['ecc_title']?></h2><br><br>
+<h2 class="title"><?php echo $boardNo?></h2><br><br>
     <?php
     if($_SESSION['no']){
     ?>

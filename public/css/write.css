@@ -2,6 +2,7 @@
     text-align: center;
 }
 
+
 .writeDiv{
     display: inline-block;
     width: 100%;
@@ -12,9 +13,8 @@
     justify-content: center;
     text-align: center;
     margin-bottom:20px;
-    border: 1px solid white;
     height: 100%;
-    max-height: 800px;
+    max-height: 2500px;
     width: 100%;
     max-width: 800px;
 }
@@ -34,7 +34,11 @@
     font-size: 12px;
 }
 
-.form input:last-child{
+.form {
+    padding: 30px 0px 30px 0px;
+    border: 1px solid white;
+}
+.form input[type=submit]{
     height: 50px;
     width: 350px;
     border-radius: 5px;
@@ -60,7 +64,41 @@
     background-color: whitesmoke;
 }
 
-.fileForm{
+.holeFileIncreaseDiv{
+    text-align: center;
+}
+
+.fileIncreaseDiv{
+    display: inline-block;
+    justify-content: center;
+}
+
+.fileIncreaseDiv div{
     display: flex;
     justify-content: center;
 }
+
+.fileIncreaseDiv input[type=file]{
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.fileIncreaseDiv p{
+    margin: 0px 20px 20px 20px;
+    cursor: pointer;
+}
+
+.fileForm{
+    display: inline-block;
+    justify-content: center;
+}
+
+.fileDiv{
+    display: flex;
+    justify-content: space-between;
+}
+
+.deleteFileBtn{
+    cursor: pointer;
+}
+

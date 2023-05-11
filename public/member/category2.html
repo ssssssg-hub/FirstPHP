@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>회원가입</title>
+  <!-- Google Material Icons -->
+  <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  />
+  <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,200"
+  />
+  <!---Google Fonts-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+          href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap"
+          rel="stylesheet"
+  />
+  <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+  />
+
+  <link rel="stylesheet" href="../../styles/global.css" />
+  <link rel="stylesheet" href="../../components/layout/layout.css" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+<header id="header"></header>
+<div class="holeMemberFormDiv">
+  <div class="memberFormDiv">
+    <h1 id="headerOne">회원가입</h1>
+    <form
+            class="memberForm"
+            name="JoinForm"
+            onsubmit="return registerCheck()"
+            method="post"
+    >
+      <!--            <input type="hidden" name="mode" value="register"/>-->
+      <label for="name">이름 <span style="color: red">*</span></label>
+      <input type="text" id="name" name="name" placeholder="이름을 입력하세요" />
+      <p id="name_warning" style="display: none; margin-top: 0px"></p>
+
+      <!-- <label for="id">아이디 <span style="color: red">*</span></label>
+      <input type="text" id="id" name="id" placeholder="id를 입력하세요" />
+      <p id="id_warning" style="display: none; margin-top: 0px"></p> -->
+
+      <label for="password">비밀번호 <span style="color: red">*</span></label>
+      <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="문자, 숫자, 특수문자를 포함한 패스워드를 8자 이상"
+      />
+      <p id="password_warning" style="display: none; margin-top: 0px"></p>
+
+      <label for="passwordCheck"
+      >비밀번호 확인 <span style="color: red">*</span></label
+      >
+      <input
+              type="password"
+              id="passwordCheck"
+              name="passwordCheck"
+              placeholder="패스워드를 다시 입력하세요"
+      />
+      <p id="passwordCheck_warning" style="display: none; margin-top: 0px"></p>
+
+      <label for="email">이메일 <span style="color: red">*</span></label><button onclick="emailCheck(event)">메일인증</button>
+      <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="이메일을 입력하세요 예시: abc@naver.com"
+              required
+      />
+      <p id="email_warning" style="display: none; margin-top: 0px"></p>
+
+      <label for="phone">휴대폰 번호 <span style="color: red">*</span></label>
+      <input
+              type="text"
+              id="phone"
+              name="phone"
+              placeholder="휴대폰 번호를 입력하세요 -은 생략해도 됩니다"
+      />
+      <p id="phone_warning" style="display: none; margin-top: 0px"></p>
+
+      <label for="address">주소</label>
+      <input
+              type="text"
+              id="address"
+              name="address"
+              placeholder="주소를 입력하세요"
+      />
+
+      <input type="submit" value="회원가입" />
+    </form>
+  </div>
+</div>
+<script src="index.js"></script>
+<footer id="footer"></footer>
+<script>
+  function emailCheck(event){
+    event.preventDefault();
+    console.log(document.getElementById('email').value)
+  }
+</script>
+</body>
+<script type="module" src="../main/index.js"></script>
+</html>

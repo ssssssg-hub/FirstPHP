@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="/css/form.css">
+  <script>
+
+    function loginCheck() {
+      const inputEmail = document.getElementById("email").value;
+      const inputPassword = document.getElementById("password").value;
+      const emailRegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // 정규식…
+
+      fetch("http://localhost:5500/api/v1/users/singIn", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: inputEmail,
+          password: inputPassword,
+        }),
+      })
+              .then((response) => {
+                alert(response + "&" + response.json())
+                return response.json();
+              })
+              .then((data) => {
+                alert(data)
+                console.log(data);
+              })
+              .catch((error) => {
+                alert("로그인에 실패했음을 알리는 alert")
+              });
+    }
+
+    // 서버에서 넘어오는 값 예시로 하나 만든 변수
+    const member =
+            [
+              {
+                "name": "김동균",
+                "id": "dododongJang",
+                "email": "dong123@gmail.com",
+                "phone": "010-1234-5678",
+                "address": "경남 거제시",
+                "orderHistory": [
+                  {
+                    "orderNumber": "202304200001",
+                    "orderDate": "2023-04-20",
+                    "orderStatus": "배송완료",
+                    "product": "방울토마토",
+                    "price": 20000
+                  },
+                  {
+                    "orderNumber": "202303290002",
+                    "orderDate": "2023-03-29",
+                    "orderStatus": "배송중",
+                    "product": "오이",
+                    "price": 12000
+                  }
+                ]
+              }
+            ]
+
+    fetch(`http://localhost:5500/api/v1/users/${userId}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`, // 로그인 토큰
+        "Content-Type": "application/json",
+      },
+    })
+            .then((response) => response.json())
+
+            .then((data) => {
+              alert(data.name);
+            })
+            .catch((error) => {
+              console.error("Error fetching user information:", error);
+              // alert(error.message);
+            });
+
+    $("#order-submit-button").addEventListener("click", () => {
+      // console.log(
+      //   JSON.stringify({
+      //     orderItems: orderItems,
+      //     orderAddr: $("#address").value,
+      //     deliveryState: 0,
+      //     deleteFlag: false,
+      //   }),
+      // );
+      fetch(${http}/api/v1/orders/${userId}, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+    },
+      body: JSON.stringify({
+        orderItems: orderItems,
+        orderAddr: $("#address").value,
+        deliveryState: 0,
+        deleteFlag: false,
+      }),
+    })
+    .then((response) => {
+        /* 서버 응답 처리 */
+        if (response.ok) {
+          alert("결재 완료 되었습니다.");
+          window.location.href = ${http}/api/v1/orders/${userId};
+          console.log("결재 완료");
+        } else {
+          alert(결재 실패
+          다시 시도해 주세요.);
+          console.error("결재 실패:", response.statusText);
+        }
+      })
+              .catch((error) => {
+                alert(결재 실패
+                다시 시도해 주세요.);
+                console.error("결재 실패:", error);
+              });
+
+
+
+      // 회원수정 폼 버튼 체크 함수
+    function fixMemberCheck(){
+
+      if(isValidName == false){
+        alert("이름을 입력하세요")
+        return false;
+      } else if(isValidId == false) {
+        alert("ID를 입력하세요")
+        return false;
+      } else if(isValidPassword == false) {
+        alert("패스워드를 확인하세요")
+        return false;
+      } else if(isValidPasswordCheck == false) {
+        alert("패스워드를 확인하세요")
+        return false;
+      } else if(isValidEmail == false) {
+        alert("이메일을 확인하세요")
+        return false;
+      } else if(isValidPhone == false){
+        alert("휴대폰 번호를 확인하세요")
+        return false;
+      } else {
+        // 여기 자리에 서버로 보내는 동작을 시키면 됨
+      }
+    }
+
+  </script>
+</head>
+<body>
+<div class="holeMemberFormDiv">
+  <div class="memberFormDiv">
+    <h1>회원수정</h1>
+    <form class="memberForm" name="firstForm" onsubmit="return fixMemberCheck()" method="post">
+      <input type="hidden" name="mode" value="register"/>
+
+      <label for="name">Name <span style="color: red">*</span></label><br>
+      <input type="text"id="name" name="name" placeholder="이름을 입력하세요"><br>
+      <p id="name_warning" style="display: none; margin-top: 0px"></p>
+
+      <label for="id">Id <span style="color: red">*</span></label><br>
+      <input type="text" id="id" name="id" placeholder="id를 입력하세요" value=""><br>
+      <p id="id_warning" style="display: none; margin-top: 0px"></p>
+
+      <label for="password">Password <span style="color: red">*</span></label><br>
+      <input type="password" id="password" name="password" placeholder="문자, 숫자, 특수문자를 포함한 패스워드를 8자 이상"><br>
+      <p id="password_warning" style="display: none; margin-top: 0px"></p>
+
+      <label for="passwordCheck">PasswordCheck <span style="color: red">*</span></label><br>
+      <input type="password" id="passwordCheck" name="passwordCheck" placeholder="패스워드를 다시 입력하세요"><br>
+      <p id="passwordCheck_warning" style="display: none; margin-top: 0px"></p>
+
+      <label for="email">Email <span style="color: red">*</span></label><br>
+      <input type="email" id="email" name="email" placeholder="이메일을 입력하세요 예시: abc@naver.com" value="" required>
+      <p id="email_warning" style="display: none; margin-top: 0px"></p>
+
+      <label for="phone">Phone <span style="color: red">*</span></label><br>
+      <input type="text" id="phone" name="phone" placeholder="휴대폰 번호를 입력하세요 -은 생략해도 됩니다" value=""><br>
+      <p id="phone_warning" style="display: none; margin-top: 0px"></p>
+
+      <label for="address">Address</label><br>
+      <input type="text" id="address" name="address" placeholder="주소를 입력하세요" value=""><br><br>
+
+      <input type="submit" value="수정하기">
+    </form>
+  </div>
+</div>
+<script>
+  // 각 input 값에 서버에서 가져오는 회원의 정보를 받아서 기본 value 로 넣어주는 부분.
+ document.getElementById('name').value = member.name;
+ document.getElementById('id').value = member.id;
+ document.getElementById('email').value = member.email;
+ document.getElementById('phone').value = member.phone;
+ document.getElementById('address').value = member.address;
+
+
+ // 여기서부터 선언되는 변수들은 밑에 회원 수정시 유효성 검사를 하기 위해 사용되는 변수들을 선언해둔 것.
+ let name = document.getElementById('name');
+ let isValidName = false;
+ let nameWarning = document.getElementById('name_warning');
+
+ let id = document.getElementById('id');
+ let idWarning = document.getElementById('id_warning');
+ let isValidId = false;
+
+ let password = document.getElementById('password');
+ let passwordPattern = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+ let passwordWarning = document.getElementById('password_warning');
+ let isValidPassword = false;
+
+ let passwordCheck = document.getElementById('passwordCheck');
+ let passwordCheckWarning = document.getElementById('passwordCheck_warning');
+ let isValidPasswordCheck = false;
+
+ let email = document.getElementById('email')
+ let emailPattern = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/u;
+ let emailWarning = document.getElementById('email_warning');
+ let isValidEmail = false;
+
+ let phone = document.getElementById('phone');
+ let phonePattern = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+ let phoneWarning = document.getElementById('phone_warning');
+ let isValidPhone = false;
+
+
+ // 회원가입 로직과 조금 달라진 부분이 있는데
+ // 1. 우선 회원가입과 다르게 회원 수정에서는 회원의 기본 정보값을 받아서 해당하는 input에 보여주고 있어야함.
+ //     그러면 사용자가 수정을 안했을 때에도 입력이 되어있는 정보가 있는지 확인이 되어야함.
+ //     이를 위해 페이지가 로드될 때 입력되어 있던 요소들에 대한 유효성 검사를 시행함. DOMContentLoaded 부분(패스워드는 다시 입력해야 하기에 이 부분이 필요없음)
+ // 2. 1번이 완료되었으면 사용자가 수정하는 값에 대한 유효성 검사도 추가적으로 발생되어야함.
+ //     이 부분을 blur 를 사용해서 입력 요소들이 focus 를 잃을 때 유효성 검사를 시행하도록 하였음
+ // 3. 회원가입 부분과 형태가 조금 다른 부분이 있을텐데 이는 코드의 재사용성을 위해 중복되는 코드를 줄였기 때문
+ //     중복되는 코드를 함수로 만들어서 여러군데서 비슷한 로직이 일어나는 부분을 재사용 할 수 있도록 리팩토링 하였음.
+ //     코드가 중복되는 부분이 있다면 그 부분을 어떻게 하나의 로직에서 동작할 수 있도록 만드는지 고민해보는 것도 좋음.
+
+
+ // validateInput 함수는 입력요소(inputElement), 정규식(pattern), 경고요소(warningElement), 경고문구(warningText)를 인자로 받아서 입력 요소의 값을 검증하고, 검증 값에 따라 경고문구를 표시 또는 숨김, 검증결과 값 반환 동작하는 함수
+ function validateInput(inputElement, pattern, warningElement, warningText) {
+   let inputValue = inputElement.value.trim();
+   if (pattern.test(inputValue)){
+     inputElement.style.borderColor='black';
+     warningElement.style.display='none';
+     return true;
+   } else {
+     inputElement.style.borderColor='red';
+     warningElement.style.display='flex';
+     warningElement.style.color='red';
+     warningElement.textContent=warningText;
+     warningElement.style.fontSize='15px';
+     return false;
+   }
+ }
+
+ // 페이지가 로드될 때 입력되어 있던 요소들에 대해 유효성 검사를 우선 시행
+ document.addEventListener('DOMContentLoaded', ()=>{
+   isValidName = validateInput(name, /./, nameWarning, '이름을 입력하세요');
+   isValidId = validateInput(id, /./, idWarning, '아이디를 입력하세요');
+   isValidEmail = validateInput(email, emailPattern, emailWarning, '이메일 주소를 확인하세요');
+   isValidPhone = validateInput(phone, phonePattern, phoneWarning, '휴대폰 번호를 확인하세요');
+ });
+
+
+ // 입력 요소들이 focus를 잃을 때, 즉 기본 값에서 무언가 수정 동작을 시도한 이후 input 태그를 벗어날 때 유효성 검사를 시행
+ name.addEventListener('blur', ()=>{
+   isValidName = validateInput(name, /./, nameWarning, '이름을 입력하세요');
+ });
+
+ id.addEventListener('blur', ()=> {
+   isValidId = validateInput(id, /./, idWarning, '아이디를 입력하세요');
+ });
+
+ email.addEventListener('blur', ()=> {
+   isValidEmail = validateInput(email, emailPattern, emailWarning, '이메일 주소를 확인하세요');
+ });
+
+ phone.addEventListener('blur', ()=> {
+   isValidPhone = validateInput(phone, phonePattern, phoneWarning, '휴대폰 번호를 확인하세요');
+ });
+
+ // validatePassword 함수는 입력요소(passwordElement), 경고요소(passwordWarningElement), 정규식(pattern), 패스워드 확인 입력요소(matchElement), 패스워드 확인 경고요소(matchWarningElement), 패스워드 유효성 검사(isValidPassword), 패스워드 확인 결과(isValidPasswordCheck)
+ // 이런 인자들을 받아서 검증, 경고문구 표시 또는 숨김, 검증결과 값 반환 동작하는 함수.
+ function validatePassword(passwordElement, passwordWarningElement, pattern, matchElement, matchWarningElement, isValidPassword, isValidPasswordCheck) {
+   let inputPassword = passwordElement.value.trim();
+
+   // 패스워드 유효성 검사 하는 조건문
+   if (pattern.test(inputPassword)){
+     passwordElement.style.borderColor='black';
+     passwordWarningElement.style.display='none';
+     isValidPassword = true;
+   } else {
+     passwordElement.style.borderColor='red';
+     passwordWarningElement.style.display='flex';
+     passwordWarningElement.style.color='red';
+     passwordWarningElement.textContent='패스워드를 확인하세요';
+     passwordWarningElement.style.fontSize='15px'
+     isValidPassword = false;
+   }
+
+   // 패스워드가 일치하는지 확인하는 조건문
+   if (passwordElement.value == matchElement.value){
+     matchElement.style.borderColor='black';
+     matchWarningElement.style.display='none';
+     isValidPasswordCheck = true;
+   } else {
+     matchElement.style.borderColor='red';
+     matchWarningElement.style.display='flex';
+     matchWarningElement.style.color='red';
+     matchWarningElement.textContent='패스워드를 확인하세요';
+     matchWarningElement.style.fontSize='15px'
+     isValidPasswordCheck = false;
+   }
+
+   return [isValidPassword, isValidPasswordCheck];
+ }
+
+ // 입력 요소들이 focus를 잃을 때 유효성 검사 시행
+ password.addEventListener('blur', () => {
+   [isValidPassword, isValidPasswordCheck] = validatePassword(password, passwordWarning, passwordPattern, passwordCheck, passwordCheckWarning, isValidPassword, isValidPasswordCheck);
+ });
+
+ passwordCheck.addEventListener('blur', () => {
+   [isValidPassword, isValidPasswordCheck] = validatePassword(password, passwordWarning, passwordPattern, passwordCheck, passwordCheckWarning, isValidPassword, isValidPasswordCheck);
+ });
+</script>
+</body>
+</html>
